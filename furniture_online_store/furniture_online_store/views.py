@@ -2,8 +2,16 @@ from django.shortcuts import render
 
 
 def main(request):
-    return render(request, 'furniture_online_store/index.html')
+    title = 'Магазин'
+    context = {
+        'title': title,
+    }
+    return render(request, 'furniture_online_store/index.html', context)
 
 
 def contacts(request):
-    return render(request, 'furniture_online_store/contact.html')
+    title = 'Контакты'
+    context = {
+        'title': title,
+    }
+    return render(request, 'furniture_online_store/contact.html', context)
