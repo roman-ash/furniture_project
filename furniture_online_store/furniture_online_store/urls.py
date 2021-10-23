@@ -24,6 +24,7 @@ urlpatterns = [
     path('', main, name='main'),
     path('contacts/', contacts, name='contacts'),
     path('products/', include('furnitureapp.urls')),
+    path('auth/', include('authapp.urls')),
 ]
 
 if settings.DEBUG:
