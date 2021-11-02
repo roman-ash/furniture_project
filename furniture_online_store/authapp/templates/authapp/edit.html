@@ -3,7 +3,7 @@
 {% load static %}
 {% block content %}
     <img src="/media/{{ user.avatar|default:'user-place-holder.png' }}" class="w-25">
-    <form class="form-horizontal" action="{% url 'edit' %}" method="post" enctype=multipart/form-data>
+    <form class="form-horizontal" action="{% url 'auth:edit' %}" method="post" enctype=multipart/form-data>
         {% csrf_token %}
         {{ edit_form.as_p }}
       <button type="submit" class="btn btn-primary">Изменить</button>

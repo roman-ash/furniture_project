@@ -1,7 +1,11 @@
 from django.urls import path
-from .views import products
+from .views import products, product
+
+app_name = 'furnitureapp'
 
 urlpatterns = [
-    path('', products, name='products'),
-    path('category/<int:pk>', products, name='category')
+    path('', products, name='main'),
+    path('category/<int:pk>', products, name='category'),
+    path('product/<int:pk>', product, name='detail'),
+
 ]
