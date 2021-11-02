@@ -423,16 +423,7 @@ html, body {
 	position: absolute;
 }
 
-.red {
-	text-transform: uppercase;
-	color: #e53935;
-	font-size: 18px;
-	font-weight: 700;
-	text-align: left;
-	letter-spacing: 1px;
-	line-height: 17px;
-	margin-bottom: 22px;
-}
+
 
 .exclusive {
 	padding-top: 120px;
@@ -441,7 +432,7 @@ html, body {
 }
 .exclusive-big {
 	height: 570px;
-	width: 570px;	
+	width: 570px;
 	float: left;
 	background-image: url(img/product-1-lg.jpg);
 }
@@ -573,7 +564,7 @@ html, body {
 	margin-right: 0;
 }
 .text-footer h3 {
-	text-transform: uppercase; 
+	text-transform: uppercase;
 	color:  #6c6c6c;
 	font-size: 18px;
 	font-weight: 700;
@@ -762,8 +753,8 @@ td:first-child {
 .tab-control li {
 	float: left;
 	border-bottom: 1px solid #6c6c6c;
-	padding-bottom: 19px;	
-} 
+	padding-bottom: 19px;
+}
 .tab-control a {
 	color: #6c6c6c;
 	font-size: 18px;
@@ -858,7 +849,7 @@ td:first-child {
 	padding-left: 360px;
 }
 .links-menu {
-	margin:	27px auto 0px;	
+	margin:	27px auto 0px;
 	position: absolute;
 }
 .links-menu li {
@@ -893,7 +884,7 @@ td:first-child {
 	padding-left: 98px;
 	padding-right: 98px;
 	margin-top: 98px;
-	height: 651px; 
+	height: 651px;
 }
 .details-slider {
 	width: 570px;
@@ -924,7 +915,7 @@ td:first-child {
 	background-color: #fff;
     opacity: 0.7;
     position: absolute;
-    top: 0;    
+    top: 0;
 }
 .slider-control a:hover .text {
 	display: block;
