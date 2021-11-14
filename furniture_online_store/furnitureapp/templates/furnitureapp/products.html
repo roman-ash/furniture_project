@@ -75,12 +75,28 @@
                             </h2>
                       {% endif %}
                   </div>
+                  <div class="paginator">
+                      {% if products.has_previous %}
+                        <a href="{% url 'products:page' category.pk products.previous_page_number %}">
+                            <
+                        </a>
+                      {% endif %}
+                      <span class="current">
+                        страница {{ products.number }} из
+                        {{ products.paginator.num_pages }}
+                      </span>
+                      {% if products.has_next %}
+                        <a href="{% url 'products:page' category.pk products.next_page_number %}">
+                          >
+                        </a>
+                      {% endif %}
+                  </div>
                   <div class="category-products products">
 
                     {% for product in products %}
                       <div class="block">
                         <a href="{% url 'products:detail' product.pk %}">
-                          <img src="/media/{{ product.image }}" alt="product">
+                          <img src="/media/{{ product.image }}" alt="product" style="width: 270px;">
                           <div class="text">
                             <img src="{% static 'furniture_online_store/img/icon-hover.png' %}" alt="hover">
                               <h4>{{ product.name }}</h4>
