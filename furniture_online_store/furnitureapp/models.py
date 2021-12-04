@@ -59,7 +59,7 @@ class Product(models.Model):
 
 
 """
-    created = models.DateTimeField(
+    created = models.DateTimeField(    # !!OperationalError at/products/ no such column: furnitureapp_product.created
         auto_now_add=True
     )
     updated = models.DateTimeField(

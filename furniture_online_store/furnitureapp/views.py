@@ -20,7 +20,7 @@ def products(request, pk=None, page=1):
     links_menu = ProductCategory.objects.all()
     if pk is not None:
         if pk == 0:
-            products = Product.objects.filter(quantity__gte=1).order_by('price')  # filter(is_active=True, category__is_active=True)
+            products = Product.objects.filter(quantity__gte=1).order_by('price')  # filter(is_active=True, category__is_active=True) !!OperationalError at/products/ no such column: furnitureapp_product.created
             category = {'pk': 0, 'name': 'все'}
         else:
             category = get_object_or_404(ProductCategory, pk=pk)
