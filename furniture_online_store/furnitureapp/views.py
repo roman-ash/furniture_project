@@ -20,11 +20,17 @@ def products(request, pk=None, page=1):
     links_menu = ProductCategory.objects.all()
     if pk is not None:
         if pk == 0:
-            products = Product.objects.filter(quantity__gte=1).order_by('price')  # filter(is_active=True, category__is_active=True) !!OperationalError at/products/ no such column: furnitureapp_product.created
             category = {'pk': 0, 'name': 'все'}
+            products = Product.objects.filter(is_active=True, category__is_active=True, quantity__gte=1).order_by('price')
         else:
             category = get_object_or_404(ProductCategory, pk=pk)
-            products = Product.objects.filter(category__pk=pk, quantity__gte=1).order_by('price')  # filter(is_active=True, category__is_active=True)
+            products = Product.objects.filter(
+                category__pk=pk,
+                is_active=True,
+                category__is_active=True,
+                quantity__gte=1,
+            ).order_by('price')
+
         paginator = Paginator(products, 2)
         try:
             products_paginator = paginator.page(page)
@@ -42,7 +48,7 @@ def products(request, pk=None, page=1):
         return render(request, 'furnitureapp/products.html', context)
     hot_product = get_hot_product()
     same_products = get_same_products(hot_product)
-    products = Product.objects.filter(quantity__gte=1).order_by('price')  # filter(is_active=True, category__is_active=True)
+    products = Product.objects.filter(is_active=True, category__is_active=True, quantity__gte=1).order_by('price')
 
     context = {
         'title': title,
