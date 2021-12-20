@@ -46,11 +46,16 @@ def register(request):
                 print('Сообщение пользователю отправлено.')
                 return HttpResponseRedirect(reverse('auth:login'))
             else:
-                print('Сообщение пользователю не отправлено.')
+                print('Сообщение пользователю НЕ отправлено.')
                 return HttpResponseRedirect(reverse('auth:login'))
     else:
         register_form = ShopUserRegisterForm()
-    context = {'title': title, 'register_form': register_form}
+
+    context = {
+        'title': title,
+        'register_form': register_form
+    }
+
     return render(request, 'authapp/register.html', context)
 
 
@@ -94,9 +99,9 @@ def verify(request, email, activation_key):
 def send_verify_mail(user):
     verify_link = reverse('auth:verify', args=[user.email, user.activation_key])
 
-    title = f'подтвердите учетную запись {user.username}'
+    title = f'Подтвердите учетную запись {user.username}'
 
-    message = f'для подтверждения учетной записи {user.username} ' \
+    message = f'Для подтверждения учетной записи {user.username} ' \
               f'на портале {settings.DOMAIN_NAME} перейдите по ссылке: \n' \
               f'{settings.DOMAIN_NAME}{verify_link}'
 

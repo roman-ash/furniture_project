@@ -5,10 +5,11 @@ from django.urls import reverse
 from basketapp.models import Basket
 from furnitureapp.models import Product
 from django.contrib.auth.decorators import login_required
+from django.db.models import F, Q
 
 
 @login_required
-def basket(request):  # Выводит список всех доступных объектов в корзине, созданных пользователем
+def basket(request):
     basket = Basket.objects.filter(user=request.user)
     context = {
         'basket': basket,
@@ -54,8 +55,7 @@ def basket_edit(request, pk, quantity):
         basket_items = Basket.objects.filter(user=request.user).order_by('product__category')
 
         context = {
-            'basket': basket_items,
-
+            'basket': basket_items
         }
         result = render_to_string('basketapp/includes/inc_basket_list.html', context)
         return JsonResponse({'result': result})
