@@ -49,7 +49,14 @@ class Order(models.Model):
         verbose_name_plural = 'заказы'
 
     def __str__(self):
-        return f'Заказ {self.user.name} №{self.id} от {self.created}'
+        return f'Заказ {self.user.username} №{self.id} от {self.created}'
+
+    def get_summary(self):
+        items = self.orderitems.select_related()
+        return {
+            'total_cost': sum(list(map(lambda x: x.quantity * x.product.price, items))),
+            'total_quantity': sum(list(map(lambda x: x.quantity, items))),
+        }
 
     def get_total_quantity(self):
         items = self.orderitems.select_related()
@@ -62,14 +69,6 @@ class Order(models.Model):
     def get_total_cost(self):
         items = self.orderitems.select_related()
         return sum(list(map(lambda x: x.quantity * x.product.price, items)))
-
-    def delete(self):
-        for item in self.orderitems.select_related():
-            item.product.quantity += item.quantity
-            item.product.save()
-
-        self.is_active = False
-        self.save()
 
 
 class OrderItemQuerySet(models.QuerySet):
